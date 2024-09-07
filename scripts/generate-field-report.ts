@@ -1,10 +1,10 @@
 /* eslint-disable max-depth */
-import { downloadDictionaryDataIfNecessary } from './utilities/download'
-import { type Entry } from './utilities/types'
-import { isValid } from './utilities/validation'
 import { createReadStream } from 'node:fs'
 import fs from 'node:fs/promises'
 import readline from 'node:readline'
+import { downloadDictionaryDataIfNecessary } from './utilities/download'
+import { type Entry } from './utilities/types'
+import { isValid } from './utilities/validation'
 
 type Report = {
 	categories: string[]

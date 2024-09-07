@@ -54,7 +54,7 @@
 	},
 	"devDependencies": {
 		"@cspell/cspell-tools": "^8.14.2",
-		"@kitschpatrol/shared-config": "^4.7.2",
+		"@kitschpatrol/shared-config": "^4.7.5",
 		"@types/node": "^22.5.4",
 		"bumpp": "^9.5.2",
 		"pretty-bytes": "^6.1.1",

@@ -1,13 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-	"import": [
-		"@kitschpatrol/cspell-config",
-		"./cspell-ext.json"
-	],
+	"import": ["@kitschpatrol/cspell-config", "./cspell-ext.json"],
 	"ignorePaths": [],
-	"words": [
-		"kaikki",
-		"Tatu",
-		"Ylonen"
-	]
+	"words": ["Kaikki"]
 }

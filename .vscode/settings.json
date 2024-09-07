@@ -28,5 +28,5 @@
 		"**/.npmrc",
 		"**/.prettierignore"
 	],
-	"prettier.enable": true,
+	"prettier.enable": true
 }

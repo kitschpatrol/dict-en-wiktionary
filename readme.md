@@ -6,8 +6,6 @@
 
 <!-- /title -->
 
-<!-- banner -->
-
 <!-- badges -->
 
 [![NPM Package @kitschpatrol/dict-en-wiktionary](https://img.shields.io/npm/v/@kitschpatrol/dict-en-wiktionary.svg)](https://npmjs.com/package/@kitschpatrol/dict-en-wiktionary)
@@ -94,7 +92,7 @@ Thanks to Jason Dent and [Street Side Software](https://streetsidesoftware.com/)
 
 ### Wiktionary
 
-This library uses data from [Wiktionary](https://www.wiktionary.org/), which is available under the [Creative Commons Attribution-ShareAlike License](https://creativecommons.org/licenses/by-sa/4.0/). Data sourced from Wiktionary is unmodified.
+This CSpell dictionary uses data from [Wiktionary](https://www.wiktionary.org/), which is available under the [Creative Commons Attribution-ShareAlike License](https://creativecommons.org/licenses/by-sa/4.0/). Data sourced from Wiktionary is unmodified.
 
 ### Kaikki.org
 
@@ -110,9 +108,9 @@ Thanks to [Tatu Ylonen](https://ylonen.org) at [Kaikki.org](https://kaikki.org/d
 
 ## License
 
-This library's code and dictionary data are shared under difference licenses:
+This extension's (very small quantity of) code and (very large quantity of) dictionary data are shared under difference licenses:
 
-### Library source code
+### Extension source code
 
 [MIT](license.txt)
 

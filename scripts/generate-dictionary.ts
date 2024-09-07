@@ -1,11 +1,11 @@
 // Generates the /src/en-wiktionary.txt file from the Kaikki data file.
 
-import { downloadDictionaryDataIfNecessary } from './utilities/download'
-import { type Entry } from './utilities/types'
-import { isValid } from './utilities/validation'
 import { createReadStream, createWriteStream } from 'node:fs'
 import fs from 'node:fs/promises'
 import readline from 'node:readline'
+import { downloadDictionaryDataIfNecessary } from './utilities/download'
+import { type Entry } from './utilities/types'
+import { isValid } from './utilities/validation'
 
 function sanitizeWord(word: string, cSpellPrefixesAndSuffixes = false): string {
 	const cleanWord = word.replaceAll(/–|—/g, '-').trim()
