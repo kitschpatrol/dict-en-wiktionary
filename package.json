@@ -1,0 +1,67 @@
+{
+	"name": "@kitschpatrol/dict-en-wiktionary",
+	"version": "0.0.0",
+	"type": "module",
+	"description": "An extremely permissive English dictionary sourced from Wiktionary for use with CSpell.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kitschpatrol/dict-en-wiktionary.git"
+	},
+	"homepage": "https://github.com/kitschpatrol/dict-en-wiktionary",
+	"bugs": {
+		"url": "https://github.com/kitschpatrol/dict-en-wiktionary/issues",
+		"email": "eric@ericmika.com"
+	},
+	"author": {
+		"name": "Eric Mika",
+		"email": "eric@ericmika.com",
+		"url": "https://ericmika.com"
+	},
+	"license": "MIT",
+	"packageManager": "pnpm@9.9.0",
+	"engines": {
+		"node": ">=22.0.0",
+		"pnpm": ">=9.0.0"
+	},
+	"exports": {
+		".": "./cspell-ext.json",
+		"./cspell": "./cspell-ext.json",
+		"./cspell-ext.json": "./cspell-ext.json"
+	},
+	"files": [
+		"cspell-ext.json",
+		"dict/en-wiktionary.trie"
+	],
+	"keywords": [
+		"cspell",
+		"cspell-ext",
+		"cspell-dicts",
+		"dictionary",
+		"wiktionary",
+		"english",
+		"spellcheck",
+		"spelling",
+		"npm-package"
+	],
+	"scripts": {
+		"build": "cspell-tools-cli build",
+		"clean": "git clean -fdX && rm -f pnpm-lock.yaml",
+		"fix": "pnpm shared-config --fix",
+		"lint": "pnpm shared-config --lint",
+		"release": "pnpm bumpp -r --commit 'Release: %s' --tag 'v%s' && pnpm build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')",
+		"test": "head -n 1000 \"src/en-wiktionary.txt\" | cspell -c ./cspell-ext.json \"--locale=en,en-US\" \"--languageId=*\" stdin",
+		"update": "pnpm tsx ./scripts/generate-dictionary.ts"
+	},
+	"devDependencies": {
+		"@cspell/cspell-tools": "^8.14.2",
+		"@kitschpatrol/shared-config": "^4.7.2",
+		"@types/node": "^22.5.4",
+		"bumpp": "^9.5.2",
+		"pretty-bytes": "^6.1.1",
+		"tsx": "^4.19.0",
+		"typescript": "^5.5.4"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

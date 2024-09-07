@@ -1,0 +1,2 @@
+0bcb4aef0952ddeb7bb912de3b3fc409a3d96403  dict/en-wiktionary.trie
+7b29f6d2640cbea1b864616a6f6f5d47ab62ab43  src/en-wiktionary.txt
