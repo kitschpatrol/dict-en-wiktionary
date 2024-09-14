@@ -3,22 +3,16 @@
 	"version": "1.0.1",
 	"type": "module",
 	"description": "An extremely permissive English dictionary sourced from Wiktionary for use with CSpell.",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/kitschpatrol/dict-en-wiktionary.git"
-	},
+	"repository": "github:kitschpatrol/dict-en-wiktionary",
 	"homepage": "https://github.com/kitschpatrol/dict-en-wiktionary",
-	"bugs": {
-		"url": "https://github.com/kitschpatrol/dict-en-wiktionary/issues",
-		"email": "eric@ericmika.com"
-	},
+	"bugs": "https://github.com/kitschpatrol/dict-en-wiktionary/issues",
 	"author": {
 		"name": "Eric Mika",
 		"email": "eric@ericmika.com",
 		"url": "https://ericmika.com"
 	},
 	"license": "MIT",
-	"packageManager": "pnpm@9.9.0",
+	"packageManager": "pnpm@9.10.0",
 	"engines": {
 		"node": ">=22.0.0",
 		"pnpm": ">=9.0.0"
@@ -45,21 +39,21 @@
 	],
 	"scripts": {
 		"build": "cspell-tools-cli build",
-		"clean": "git clean -fdX && rm -f pnpm-lock.yaml",
-		"fix": "pnpm shared-config --fix",
-		"lint": "pnpm shared-config --lint",
-		"release": "pnpm bumpp -r --commit 'Release: %s' --tag 'v%s' && pnpm build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')",
+		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
+		"fix": "shared-config --fix",
+		"lint": "shared-config --lint",
+		"release": "bumpp --commit 'Release: %s' && pnpm run build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')",
 		"test": "head -n 1000 \"src/en-wiktionary.txt\" | cspell -c ./cspell-ext.json \"--locale=en,en-US\" \"--languageId=*\" stdin",
-		"update": "pnpm tsx ./scripts/generate-dictionary.ts"
+		"update": "tsx ./scripts/generate-dictionary.ts"
 	},
 	"devDependencies": {
 		"@cspell/cspell-tools": "^8.14.2",
-		"@kitschpatrol/shared-config": "^4.7.5",
-		"@types/node": "^22.5.4",
+		"@kitschpatrol/shared-config": "^4.7.9",
+		"@types/node": "22.0.0",
 		"bumpp": "^9.5.2",
 		"pretty-bytes": "^6.1.1",
-		"tsx": "^4.19.0",
-		"typescript": "^5.5.4"
+		"tsx": "^4.19.1",
+		"typescript": "^5.6.2"
 	},
 	"publishConfig": {
 		"access": "public"
