@@ -22,7 +22,7 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 	// Create dir if needed
 	await fs.mkdir(path.dirname(outputLocationPath), { recursive: true })
 
-	// eslint-disable-next-line n/no-unsupported-features/node-builtins
+	// eslint-disable-next-line node/no-unsupported-features/node-builtins
 	const readable = stream.Readable.fromWeb(body as ReadableStream)
 
 	console.log(`Download started...`)
@@ -54,7 +54,6 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 
 /**
  * Downloads the dictionary data if it is not already present.
- *
  * @returns The path to the downloaded dictionary data.
  */
 export async function downloadDictionaryDataIfNecessary(): Promise<string> {

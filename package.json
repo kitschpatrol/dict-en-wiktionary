@@ -1,31 +1,7 @@
 {
 	"name": "@kitschpatrol/dict-en-wiktionary",
 	"version": "1.0.2",
-	"type": "module",
 	"description": "An extremely permissive English dictionary sourced from Wiktionary for use with CSpell.",
-	"repository": "github:kitschpatrol/dict-en-wiktionary",
-	"homepage": "https://github.com/kitschpatrol/dict-en-wiktionary",
-	"bugs": "https://github.com/kitschpatrol/dict-en-wiktionary/issues",
-	"author": {
-		"name": "Eric Mika",
-		"email": "eric@ericmika.com",
-		"url": "https://ericmika.com"
-	},
-	"license": "MIT",
-	"packageManager": "pnpm@9.10.0",
-	"engines": {
-		"node": ">=22.0.0",
-		"pnpm": ">=9.0.0"
-	},
-	"exports": {
-		".": "./cspell-ext.json",
-		"./cspell": "./cspell-ext.json",
-		"./cspell-ext.json": "./cspell-ext.json"
-	},
-	"files": [
-		"cspell-ext.json",
-		"dict/en-wiktionary.trie"
-	],
 	"keywords": [
 		"cspell",
 		"cspell-ext",
@@ -37,25 +13,61 @@
 		"spelling",
 		"npm-package"
 	],
+	"homepage": "https://github.com/kitschpatrol/dict-en-wiktionary",
+	"bugs": "https://github.com/kitschpatrol/dict-en-wiktionary/issues",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kitschpatrol/dict-en-wiktionary"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Eric Mika",
+		"email": "eric@ericmika.com",
+		"url": "https://ericmika.com"
+	},
+	"type": "module",
+	"exports": {
+		".": "./cspell-ext.json",
+		"./cspell": "./cspell-ext.json",
+		"./cspell-ext.json": "./cspell-ext.json"
+	},
+	"files": [
+		"cspell-ext.json",
+		"dict/en-wiktionary.trie"
+	],
 	"scripts": {
 		"build": "cspell-tools-cli build",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
-		"fix": "shared-config --fix",
-		"lint": "shared-config --lint",
+		"fix": "kpi fix",
+		"lint": "kpi lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm run build && pnpm publish --otp $(op read 'op://Personal/Npmjs/one-time password?attribute=otp')",
 		"test": "head -n 1000 \"src/en-wiktionary.txt\" | cspell -c ./cspell-ext.json \"--locale=en,en-US\" \"--languageId=*\" stdin",
 		"update": "tsx ./scripts/generate-dictionary.ts"
 	},
 	"devDependencies": {
 		"@cspell/cspell-tools": "^8.14.2",
-		"@kitschpatrol/shared-config": "^4.7.9",
+		"@kitschpatrol/shared-config": "^5.0.6",
 		"@types/node": "22.0.0",
 		"bumpp": "^9.5.2",
 		"pretty-bytes": "^6.1.1",
 		"tsx": "^4.19.1",
-		"typescript": "^5.6.2"
+		"typescript": "~5.7.3"
+	},
+	"packageManager": "pnpm@10.5.2",
+	"engines": {
+		"node": ">=22.0.0",
+		"pnpm": ">=10.0.0"
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"puppeteer"
+		],
+		"overrides": {
+			"eslint-plugin-markdown": "^5.1.0"
+		}
 	}
 }

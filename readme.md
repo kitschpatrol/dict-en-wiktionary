@@ -57,11 +57,9 @@ npm install -d @kitschpatrol/dict-en-wiktionary
 
 The `cspell-ext.json` file in this package should be added to the import section in your `cspell.json` configuration file.
 
-```javascript
+```json
 {
-    // …
-    "import": ["@kitschpatrol/dict-en-wiktionary/cspell-ext.json"],
-    // …
+  "import": ["@kitschpatrol/dict-en-wiktionary/cspell-ext.json"]
 }
 ```
 

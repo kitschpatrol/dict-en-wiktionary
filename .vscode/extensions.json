@@ -3,6 +3,9 @@
 		"streetsidesoftware.code-spell-checker",
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
-		"unifiedjs.vscode-mdx"
+		"unifiedjs.vscode-mdx",
+		"astro-build.astro-vscode",
+		"svelte.svelte-vscode",
+		"stylelint.vscode-stylelint"
 	]
 }

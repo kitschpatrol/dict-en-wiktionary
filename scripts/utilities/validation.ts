@@ -9,6 +9,9 @@ export type ValidationOptions = {
 	minLength: number
 }
 
+/**
+ * Returns true if a Wiktionary entry qualifies for inclusion in the dictionary.
+ */
 export function isValid(entry: Entry, options?: Partial<ValidationOptions>): boolean {
 	// No validation by default
 	const {

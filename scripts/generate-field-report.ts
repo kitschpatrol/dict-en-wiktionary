@@ -15,6 +15,7 @@ type Report = {
 
 function validCategory(category: string): boolean {
 	// Regex test for a number of words
+	// eslint-disable-next-line regexp/no-unused-capturing-group
 	return !/(prefixed|suffixed)/.test(category)
 }
 
