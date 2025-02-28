@@ -21,7 +21,7 @@
 
 ## Overview
 
-This is a pre-built [CSpell](https://cspell.org/) dictionary with 800k+ English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in July 2024.
+This is a pre-built [CSpell](https://cspell.org/) dictionary with 800k+ English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in February 2025.
 
 ## Getting started
 
@@ -62,6 +62,24 @@ The `cspell-ext.json` file in this package should be added to the import section
   "import": ["@kitschpatrol/dict-en-wiktionary/cspell-ext.json"]
 }
 ```
+
+### Versioning
+
+This repo vaguely follows semver, but there is some ontological ambiguity as to whether adding and removing words from the dictionary reflects a new feature, a bug fix, or a breaking change.
+
+I'll attempt to follow patterns observed in other CSpell dictionary repositories:
+
+### Major
+
+- Breaking changes related to maintaining ongoing compatibility with the CSpell project.
+
+### Minor
+
+- Additions and removals of words based on recent changes to Wiktionary. This can potentially change your spell-checking results!
+
+### Patch
+
+- Dependency or other minor updates that will not affect spell-checking results.
 
 ### Implementation notes
 
@@ -110,7 +128,7 @@ This extension's (very small quantity of) code and (very large quantity of) dict
 
 ### Extension source code
 
-[MIT](license.txt)
+[MIT](license.txt) © Eric Mika
 
 ### Wiktionary dictionary data
 
