@@ -45,12 +45,12 @@
 		"update": "tsx ./scripts/generate-dictionary.ts"
 	},
 	"devDependencies": {
-		"@cspell/cspell-tools": "^8.14.2",
+		"@cspell/cspell-tools": "^8.17.5",
 		"@kitschpatrol/shared-config": "^5.0.6",
 		"@types/node": "22.0.0",
-		"bumpp": "^9.5.2",
+		"bumpp": "^9.11.1",
 		"pretty-bytes": "^6.1.1",
-		"tsx": "^4.19.1",
+		"tsx": "^4.19.3",
 		"typescript": "~5.7.3"
 	},
 	"packageManager": "pnpm@10.5.2",
