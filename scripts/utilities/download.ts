@@ -22,7 +22,6 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 	// Create dir if needed
 	await fs.mkdir(path.dirname(outputLocationPath), { recursive: true })
 
-	// eslint-disable-next-line node/no-unsupported-features/node-builtins
 	const readable = stream.Readable.fromWeb(body as ReadableStream)
 
 	console.log(`Download started...`)
