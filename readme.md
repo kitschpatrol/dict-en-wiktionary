@@ -21,7 +21,7 @@
 
 ## Overview
 
-This is a pre-built [CSpell](https://cspell.org/) dictionary with 800k+ English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in February 2025.
+This is a pre-built [CSpell](https://cspell.org/) dictionary with 800k+ English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in November 2025.
 
 ## Getting started
 
@@ -94,7 +94,7 @@ No censorship and _almost_ no curation is performed when generating the dictiona
 See the [generate-dictionary.ts](/scripts/generate-dictionary.ts) script for additional
 details.
 
-My intention is to update this dictionary with the latest words from Wiktionary every quarter or two.
+My intention is to update this dictionary with the latest words from Wiktionary at least once a year.
 
 ## Maintainers
 
