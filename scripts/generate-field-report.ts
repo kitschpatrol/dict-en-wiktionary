@@ -2,8 +2,8 @@
 import { createReadStream } from 'node:fs'
 import fs from 'node:fs/promises'
 import readline from 'node:readline'
+import type { Entry } from './utilities/types'
 import { downloadDictionaryDataIfNecessary } from './utilities/download'
-import { type Entry } from './utilities/types'
 import { isValid } from './utilities/validation'
 
 type Report = {
@@ -43,6 +43,7 @@ async function generateReport(
 	}
 
 	for await (const line of rl) {
+		// eslint-disable-next-line ts/no-unsafe-type-assertion
 		const entry = JSON.parse(line) as Entry
 
 		// Generated report:

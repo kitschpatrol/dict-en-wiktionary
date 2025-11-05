@@ -5,12 +5,12 @@
 
 // This could just be a wget or curl...
 
+import type { ReadableStream } from 'node:stream/web'
 import { createWriteStream } from 'node:fs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import stream from 'node:stream'
 import { pipeline } from 'node:stream/promises'
-import { type ReadableStream } from 'node:stream/web'
 import prettyBytes from 'pretty-bytes'
 
 async function downloadFile(fileUrl: string, outputLocationPath: string) {
@@ -22,6 +22,7 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 	// Create dir if needed
 	await fs.mkdir(path.dirname(outputLocationPath), { recursive: true })
 
+	// eslint-disable-next-line ts/no-unsafe-type-assertion
 	const readable = stream.Readable.fromWeb(body as ReadableStream)
 
 	console.log(`Download started...`)

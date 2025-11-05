@@ -15,7 +15,7 @@
 
 <!-- short-description -->
 
-**A highly permissive English dictionary sourced from Wiktionary for use with CSpell.**
+**An extremely permissive English dictionary sourced from Wiktionary for use with CSpell.**
 
 <!-- /short-description -->
 
