@@ -1,6 +1,6 @@
 {
 	"name": "@kitschpatrol/dict-en-wiktionary",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "An extremely permissive English dictionary sourced from Wiktionary for use with CSpell.",
 	"keywords": [
 		"cspell",
