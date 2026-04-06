@@ -22,3 +22,4 @@ vendor/
 # Customizations
 /data/*
 !/data/readme.md
+/.claude/*

@@ -30,14 +30,12 @@ async function countLines(filePath: string): Promise<number> {
 }
 
 export default mdatConfig({
-	rules: {
-		'update-date'() {
-			const updateDate = getGitLastModified('./src/en-wiktionary.txt')
-			return updateDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-		},
-		async 'word-count'() {
-			const wordCount = await countLines('./src/en-wiktionary.txt')
-			return wordCount.toLocaleString('en-US')
-		},
+	'update-date'() {
+		const updateDate = getGitLastModified('./src/en-wiktionary.txt')
+		return updateDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+	},
+	async 'word-count'() {
+		const wordCount = await countLines('./src/en-wiktionary.txt')
+		return wordCount.toLocaleString('en-US')
 	},
 })

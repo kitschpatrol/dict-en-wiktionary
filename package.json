@@ -25,6 +25,7 @@
 		"email": "eric@ericmika.com",
 		"url": "https://ericmika.com"
 	},
+	"sideEffects": false,
 	"type": "module",
 	"exports": {
 		".": "./cspell-ext.json",
@@ -38,24 +39,30 @@
 	"scripts": {
 		"build": "cspell-tools-cli build",
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
-		"fix": "kpi fix",
-		"lint": "kpi lint",
+		"fix": "ksc fix",
+		"lint": "ksc lint",
 		"release": "bumpp --commit 'Release: %s' && pnpm run build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') && pnpm publish",
 		"test": "head -n 1000 \"src/en-wiktionary.txt\" | cspell -c ./cspell-ext.json \"--locale=en,en-US\" \"--languageId=*\" stdin",
 		"update": "tsx ./scripts/generate-dictionary.ts"
 	},
 	"devDependencies": {
-		"@cspell/cspell-tools": "^9.6.2",
-		"@kitschpatrol/shared-config": "^5.13.0",
-		"@types/node": "^20.19.30",
-		"bumpp": "^10.4.0",
+		"@cspell/cspell-tools": "^9.8.0",
+		"@kitschpatrol/shared-config": "^7.1.0",
+		"@types/node": "^20.19.39",
+		"bumpp": "^11.0.1",
 		"pretty-bytes": "^7.1.0",
 		"tsx": "^4.21.0",
 		"typescript": "~5.9.3"
 	},
-	"packageManager": "pnpm@10.28.2",
+	"packageManager": "pnpm@10.33.0",
 	"engines": {
 		"node": ">=18.0.0"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": ">=22.18.0"
+		}
 	},
 	"publishConfig": {
 		"access": "public"
