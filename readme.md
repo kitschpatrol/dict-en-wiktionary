@@ -20,7 +20,7 @@
 
 ## Overview
 
-This is a pre-built [CSpell](https://cspell.org/) dictionary with <!-- word-count -->913,922<!-- /word-count --> English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in <!-- update-date -->January 2026<!-- /update-date -->.
+This is a pre-built [CSpell](https://cspell.org/) dictionary with <!-- word-count -->920,169<!-- /word-count --> English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in <!-- update-date -->April 2026<!-- /update-date -->.
 
 ## Getting started
 
@@ -93,7 +93,7 @@ No censorship and _almost_ no curation is performed when generating the dictiona
 See the [generate-dictionary.ts](/scripts/generate-dictionary.ts) script for additional
 details.
 
-My intention is to update this dictionary with the latest words from Wiktionary at least once a year. (The mose recent update was in <!-- update-date -->January 2026<!-- /update-date -->.)
+My intention is to update this dictionary with the latest words from Wiktionary at least once a year. (The mose recent update was in <!-- update-date -->April 2026<!-- /update-date -->.)
 
 ## Maintainers
 
