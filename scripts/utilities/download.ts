@@ -54,6 +54,7 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 
 /**
  * Downloads the dictionary data if it is not already present.
+ *
  * @returns The path to the downloaded dictionary data.
  */
 export async function downloadDictionaryDataIfNecessary(): Promise<string> {

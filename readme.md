@@ -7,7 +7,7 @@
 <!-- badges -->
 
 [![NPM Package @kitschpatrol/dict-en-wiktionary](https://img.shields.io/npm/v/@kitschpatrol/dict-en-wiktionary.svg)](https://npmjs.com/package/@kitschpatrol/dict-en-wiktionary)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
 [![CI](https://github.com/kitschpatrol/dict-en-wiktionary/actions/workflows/ci.yml/badge.svg)](https://github.com/kitschpatrol/dict-en-wiktionary/actions/workflows/ci.yml)
 
 <!-- /badges -->
@@ -20,7 +20,7 @@
 
 ## Overview
 
-This is a pre-built [CSpell](https://cspell.org/) dictionary with <!-- word-count -->920,169<!-- /word-count --> English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary:Main_Page) project in <!-- update-date -->April 2026<!-- /update-date -->.
+This is a pre-built [CSpell](https://cspell.org/) dictionary with <!-- word-count -->920,169<!-- /word-count --> English words sampled from the [Wiktionary](https://en.wiktionary.org/wiki/Wiktionary\:Main_Page) project in <!-- update-date -->April 2026<!-- /update-date -->.
 
 ## Getting started
 
@@ -97,7 +97,7 @@ My intention is to update this dictionary with the latest words from Wiktionary 
 
 ## Maintainers
 
-@kitschpatrol
+[kitschpatrol](https://github.com/kitschpatrol)
 
 ## Acknowledgments
 
@@ -117,7 +117,11 @@ Thanks to [Tatu Ylonen](https://ylonen.org) at [Kaikki.org](https://kaikki.org/d
 
 ## Contributing
 
-[Issues](https://github.com/kitschpatrol/dict-en-wiktionary/issues) and pull requests are welcome.
+[Issues](https://github.com/kitschpatrol/dict-en-wiktionary/issues) are welcome and appreciated.
+
+Please open an issue to discuss changes before submitting a pull request. Unsolicited PRs (especially AI-generated ones) are unlikely to be merged.
+
+This repository uses [@kitschpatrol/shared-config](https://github.com/kitschpatrol/shared-config) (via its `ksc` CLI) for linting and formatting, plus [MDAT](https://github.com/kitschpatrol/mdat) for readme placeholder expansion.
 
 <!-- /contributing -->
 
@@ -131,6 +135,6 @@ This extension's (very small quantity of) code and (very large quantity of) dict
 
 ### Wiktionary dictionary data
 
-Dual-licensed under the Creative Commons Attribution-ShareAlike 4.0 International License ([CC-BY-SA)](https://en.wiktionary.org/wiki/Wiktionary:Text_of_Creative_Commons_Attribution-ShareAlike_4.0_International_License) and the GNU Free Documentation License ([GFDL](https://en.wiktionary.org/wiki/Wiktionary:Text_of_the_GNU_Free_Documentation_License)).
+Dual-licensed under the Creative Commons Attribution-ShareAlike 4.0 International License ([CC-BY-SA)](https://en.wiktionary.org/wiki/Wiktionary\:Text_of_Creative_Commons_Attribution-ShareAlike_4.0_International_License) and the GNU Free Documentation License ([GFDL](https://en.wiktionary.org/wiki/Wiktionary\:Text_of_the_GNU_Free_Documentation_License)).
 
-See the [full Wiktionary license text](https://en.wiktionary.org/wiki/Wiktionary:Copyrights).
+See the [full Wiktionary license text](https://en.wiktionary.org/wiki/Wiktionary\:Copyrights).

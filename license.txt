@@ -1,11 +1,3 @@
-This MIT license applies to the package's source code ONLY.
-
-Certain files under the src/, dict/, and data/, directories are under Wiktionary
-license (CC-BY-SA or GFDL at your choice). The Wiktionary license text can be
-found at: https://en.wiktionary.org/wiki/Wiktionary:Copyrights.
-
-----
-
 MIT License
 
 Copyright (c) 2024-2026 Eric Mika
