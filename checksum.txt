@@ -1,2 +1,2 @@
-fdc9cf780c75171da3acb0095bd677c47cbbcf8b  dict/en-wiktionary.trie
-76ce3ac8991060ed88dd8518f01ab479d283dff3  src/en-wiktionary.txt
+5ae22897b4ce5289c1784465a9a5079c785f625b  dict/en-wiktionary.trie
+56954ce9f95915d4845840f59487d03d720d73f1  src/en-wiktionary.txt
