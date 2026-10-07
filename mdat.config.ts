@@ -16,7 +16,6 @@ async function countLines(filePath: string): Promise<number> {
 
 	try {
 		for await (const chunk of file.readableWebStream()) {
-			// eslint-disable-next-line ts/no-unsafe-type-assertion
 			const bytes = chunk as Uint8Array
 			for (const byte of bytes) {
 				if (byte === 0x0a) {

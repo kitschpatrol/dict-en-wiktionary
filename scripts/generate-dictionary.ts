@@ -8,7 +8,7 @@ import { downloadDictionaryDataIfNecessary } from './utilities/download'
 import { isValid } from './utilities/validation'
 
 function sanitizeWord(word: string, cSpellPrefixesAndSuffixes = false): string {
-	const cleanWord = word.replaceAll(/–|—/g, '-').trim()
+	const cleanWord = word.replaceAll(/–|—/gv, '-').trim()
 
 	if (cSpellPrefixesAndSuffixes) {
 		// Replace leading or trailing - with +
@@ -16,11 +16,7 @@ function sanitizeWord(word: string, cSpellPrefixesAndSuffixes = false): string {
 			return `+${cleanWord.slice(1)}`
 		}
 
-		if (cleanWord.endsWith('-')) {
-			return `${cleanWord.slice(0, -1)}+`
-		}
-
-		return cleanWord
+		return cleanWord.endsWith('-') ? `${cleanWord.slice(0, -1)}+` : cleanWord
 	}
 
 	return cleanWord
@@ -30,7 +26,7 @@ async function readWords(
 	filePath: string,
 	includePrefixes = false,
 	includeSuffixes = false,
-	maxWords: number = Number.POSITIVE_INFINITY,
+	maxWords = Infinity,
 ): Promise<{ invalid: string[]; valid: string[] }> {
 	const wordSet = new Set<string>()
 	const wordSetInvalid = new Set<string>()
@@ -42,7 +38,6 @@ async function readWords(
 	})
 
 	for await (const line of rl) {
-		// eslint-disable-next-line ts/no-unsafe-type-assertion
 		const entry = JSON.parse(line) as Entry
 
 		if (
@@ -63,7 +58,7 @@ async function readWords(
 					...(includePrefixes ? [] : ['prefix']),
 				],
 				excludedTags: ['archaic', 'Shavian', 'alt-of', 'alternative'],
-				// Cspell:ignore curch curches curchies
+				// CSpell:ignore curch curches curchies
 				excludedWords: ['curch', 'curches', 'curchies'],
 				limitCharacters: true,
 				minLength: 2,
@@ -87,8 +82,8 @@ async function readWords(
 	}
 
 	return {
-		invalid: [...wordSetInvalid].sort(),
-		valid: [...wordSet].sort(),
+		invalid: [...wordSetInvalid].toSorted(),
+		valid: [...wordSet].toSorted(),
 	}
 }
 
@@ -119,11 +114,13 @@ async function main() {
 	await writeWords(wordsFile, words)
 	console.log(`Wrote ${words.length} words to "${wordsFile}"`)
 
-	if (invalidWords.length > 0) {
-		const invalidWordsFile = './data/en-wiktionary-invalid.txt'
-		await writeWords(invalidWordsFile, invalidWords)
-		console.log(`Wrote ${invalidWords.length} invalid words to "${invalidWordsFile}"`)
+	if (invalidWords.length === 0) {
+		return
 	}
+
+	const invalidWordsFile = './data/en-wiktionary-invalid.txt'
+	await writeWords(invalidWordsFile, invalidWords)
+	console.log(`Wrote ${invalidWords.length} invalid words to "${invalidWordsFile}"`)
 }
 
 await main()

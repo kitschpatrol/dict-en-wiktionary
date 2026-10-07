@@ -22,7 +22,6 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 	// Create dir if needed
 	await fs.mkdir(path.dirname(outputLocationPath), { recursive: true })
 
-	// eslint-disable-next-line ts/no-unsafe-type-assertion
 	const readable = stream.Readable.fromWeb(body as ReadableStream)
 
 	console.log(`Download started...`)
@@ -33,10 +32,12 @@ async function downloadFile(fileUrl: string, outputLocationPath: string) {
 
 	readable.on('data', (chunk: Uint8Array) => {
 		bytesReceived += chunk.length
-		if (bytesReceived >= nextLogThreshold) {
-			console.log(`Downloaded: ${prettyBytes(bytesReceived)}`)
-			nextLogThreshold += logInterval
+		if (bytesReceived < nextLogThreshold) {
+			return
 		}
+
+		console.log(`Downloaded: ${prettyBytes(bytesReceived)}`)
+		nextLogThreshold += logInterval
 	})
 
 	readable.on('end', () => {

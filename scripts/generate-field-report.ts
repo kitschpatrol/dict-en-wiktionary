@@ -13,18 +13,14 @@ type Report = {
 	words: string[]
 }
 
-// eslint-disable-next-line regexp/no-unused-capturing-group
-const PREFIX_SUFFIX_REGEX = /(prefixed|suffixed)/
+const PREFIX_SUFFIX_REGEX = /prefixed|suffixed/v
 
 function validCategory(category: string): boolean {
 	// Regex test for a number of words
 	return !PREFIX_SUFFIX_REGEX.test(category)
 }
 
-async function generateReport(
-	filePath: string,
-	maxWords: number = Number.POSITIVE_INFINITY,
-): Promise<Report> {
+async function generateReport(filePath: string, maxWords = Infinity): Promise<Report> {
 	const fileStream = createReadStream(filePath)
 
 	const rl = readline.createInterface({
@@ -45,7 +41,6 @@ async function generateReport(
 	}
 
 	for await (const line of rl) {
-		// eslint-disable-next-line ts/no-unsafe-type-assertion
 		const entry = JSON.parse(line) as Entry
 
 		// Generated report:
@@ -54,37 +49,41 @@ async function generateReport(
 		// tags: 559
 		// words: 963439
 
-		if (isValid(entry, { limitCharacters: true, minLength: 2 })) {
-			for (const sense of entry.senses) {
-				for (const tag of sense.tags ?? []) {
-					incrementCount(reportSet.tags, tag)
+		if (!isValid(entry, { limitCharacters: true, minLength: 2 })) {
+			continue
+		}
+
+		for (const sense of entry.senses) {
+			const tags = sense.tags ?? []
+			for (const tag of tags) {
+				incrementCount(reportSet.tags, tag)
+			}
+
+			const categories = sense.categories ?? []
+			for (const category of categories) {
+				if (validCategory(category.name)) {
+					incrementCount(reportSet.categories, category.name)
 				}
 
-				for (const category of sense.categories ?? []) {
-					if (validCategory(category.name)) {
-						incrementCount(reportSet.categories, category.name)
-					}
-
-					for (const parentCategory of category.parents) {
-						if (validCategory(parentCategory)) {
-							incrementCount(reportSet.categories, parentCategory)
-						}
+				for (const parentCategory of category.parents) {
+					if (validCategory(parentCategory)) {
+						incrementCount(reportSet.categories, parentCategory)
 					}
 				}
 			}
+		}
 
-			incrementCount(reportSet.words, entry.word)
-			incrementCount(reportSet.poss, entry.pos)
+		incrementCount(reportSet.words, entry.word)
+		incrementCount(reportSet.poss, entry.pos)
 
-			if (reportSet.words.size >= maxWords) {
-				break
-			}
+		if (reportSet.words.size >= maxWords) {
+			break
 		}
 	}
 
 	const formatReport = (map: Map<string, number>): string[] =>
-		[...map.entries()]
-			.sort((a, b) => b[1] - a[1]) // Sort by frequency in descending order
+		[...map]
+			.toSorted((a, b) => b[1] - a[1]) // Sort by frequency in descending order
 			.map(([key, count]) => `${key} (${count})`)
 
 	return {

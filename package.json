@@ -38,28 +38,30 @@
 	],
 	"scripts": {
 		"build": "cspell-tools-cli build",
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && NPM_AUTH_TOKEN=$(op read 'op://Personal/npm/token') pnpm publish",
+		"prepare": "skills experimental_sync -y -f",
+		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $(op item get npm --otp)",
 		"test": "head -n 1000 \"src/en-wiktionary.txt\" | cspell -c ./cspell-ext.json \"--locale=en,en-US\" \"--languageId=*\" stdin",
 		"update": "tsx ./scripts/generate-dictionary.ts"
 	},
 	"devDependencies": {
-		"@cspell/cspell-tools": "^10.0.0",
-		"@kitschpatrol/shared-config": "^7.6.0",
-		"@types/node": "~22.18.13",
-		"bumpp": "^11.1.0",
-		"pretty-bytes": "^7.1.0",
+		"@cspell/cspell-tools": "^10.3.6",
+		"@kitschpatrol/shared-config": "^8.12.1",
+		"@types/node": "~24.13.6",
+		"bumpp": "^12.3.0",
+		"pretty-bytes": "^7.2.0",
 		"shx": "^0.4.0",
-		"tsx": "^4.22.0",
-		"typescript": "~5.9.3"
+		"skills": "^1.7.0",
+		"tsx": "^4.23.15",
+		"typescript": "~6.0.3"
 	},
-	"packageManager": "pnpm@11.1.2",
+	"packageManager": "pnpm@12.9.1",
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": ">=22.18.0"
+			"version": "^24.16.0 || >=26.3.0"
 		}
 	},
 	"publishConfig": {

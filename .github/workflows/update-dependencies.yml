@@ -1,28 +1,17 @@
-name: CI
+name: Update Dependencies
 
 on:
-  push:
-    branches: [main]
-  pull_request: {}
   workflow_dispatch: {}
+  schedule:
+    - cron: '0 3 * * 1'
 
 permissions:
   contents: read
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
-
 jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
-
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -41,11 +30,12 @@ jobs:
       - name: Install dependencies
         run: pnpm ci
 
-      - name: Build
-        run: pnpm run build
-
-      - name: Lint
-        run: pnpm run lint
-
-      - name: Test
-        run: pnpm run test
+      - name: Run ksc-update
+        uses: kitschpatrol/github-action-skill-to-pr@fe3e8b4aea5851133d8b064a68e92f7b7e4de1e4 # v1.1.1
+        with:
+          skill: ksc-update
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          model: claude-opus-5-5
+          effort: high
+          max-turns: 400

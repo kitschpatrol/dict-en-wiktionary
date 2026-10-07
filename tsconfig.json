@@ -1,23 +1,6 @@
 {
+	"extends": "@kitschpatrol/typescript-config",
 	"compilerOptions": {
-		"target": "ES2020",
-		"lib": ["ES2022", "DOM", "DOM.Iterable"],
-		"useDefineForClassFields": true,
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"resolveJsonModule": true,
-		"allowImportingTsExtensions": true,
-		"checkJs": true,
-		"strict": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noEmit": true,
-		"isolatedModules": true,
-		"skipLibCheck": true,
-		"noErrorTruncation": true
-	},
-
-	"include": ["**/*", "**/**.*"],
-	"exclude": ["**/dist/", "**/bin/"]
+		"types": ["node"]
+	}
 }
