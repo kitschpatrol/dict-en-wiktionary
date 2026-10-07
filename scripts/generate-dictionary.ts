@@ -2,7 +2,6 @@
 
 import { createReadStream, createWriteStream } from 'node:fs'
 import fs from 'node:fs/promises'
-import readline from 'node:readline'
 import type { Entry } from './utilities/types'
 import { downloadDictionaryDataIfNecessary } from './utilities/download'
 import { isValid } from './utilities/validation'
@@ -22,6 +21,32 @@ function sanitizeWord(word: string, cSpellPrefixesAndSuffixes = false): string {
 	return cleanWord
 }
 
+/**
+ * Yields each line of a JSONL file, splitting only on `\n`. Node's readline
+ * also splits on U+2028 / U+2029, which may legally appear unescaped inside
+ * JSON strings in the Kaikki data.
+ *
+ * @yields {string} Each non-empty line, without the trailing newline.
+ */
+async function* readJsonLines(filePath: string): AsyncGenerator<string> {
+	const fileStream = createReadStream(filePath, { encoding: 'utf8' })
+	let buffer = ''
+	for await (const chunk of fileStream) {
+		buffer += chunk as string
+		const lines = buffer.split('\n')
+		buffer = lines.pop() ?? ''
+		for (const line of lines) {
+			if (line.trim() !== '') {
+				yield line
+			}
+		}
+	}
+
+	if (buffer.trim() !== '') {
+		yield buffer
+	}
+}
+
 async function readWords(
 	filePath: string,
 	includePrefixes = false,
@@ -30,14 +55,7 @@ async function readWords(
 ): Promise<{ invalid: string[]; valid: string[] }> {
 	const wordSet = new Set<string>()
 	const wordSetInvalid = new Set<string>()
-	const fileStream = createReadStream(filePath)
-
-	const rl = readline.createInterface({
-		crlfDelay: Infinity,
-		input: fileStream,
-	})
-
-	for await (const line of rl) {
+	for await (const line of readJsonLines(filePath)) {
 		const entry = JSON.parse(line) as Entry
 
 		if (
