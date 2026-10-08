@@ -1,3 +1,23 @@
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@kitschpatrol/cspell-config@8.13.1'
+  - '@kitschpatrol/eslint-config@8.13.1'
+  - '@kitschpatrol/knip-config@8.13.1'
+  - '@kitschpatrol/mdat-config@8.13.1'
+  - '@kitschpatrol/prettier-config@8.13.1'
+  - '@kitschpatrol/remark-config@8.13.1'
+  - '@kitschpatrol/repo-config@8.13.1'
+  - '@kitschpatrol/shared-config@8.13.1'
+  - '@kitschpatrol/stylelint-config@8.13.1'
+  - '@kitschpatrol/typescript-config@8.13.1'
+peerDependencyRules:
+  allowedVersions:
+    # Remove once the installed version declares ESLint 10 support.
+    # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/1075
+    # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/1081
+    eslint-plugin-jsx-a11y@6>eslint: ^10.0.0
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
@@ -9,23 +29,3 @@ publicHoistPattern:
   - '*remark*'
   - '*stylelint*'
   - 'case-police'
-allowBuilds:
-  esbuild: true
-  unrs-resolver: true
-minimumReleaseAgeExclude:
-  - '@kitschpatrol/cspell-config@8.12.1'
-  - '@kitschpatrol/eslint-config@8.12.1'
-  - '@kitschpatrol/knip-config@8.12.1'
-  - '@kitschpatrol/mdat-config@8.12.1'
-  - '@kitschpatrol/prettier-config@8.12.1'
-  - '@kitschpatrol/remark-config@8.12.1'
-  - '@kitschpatrol/repo-config@8.12.1'
-  - '@kitschpatrol/shared-config@8.12.1'
-  - '@kitschpatrol/stylelint-config@8.12.1'
-  - '@kitschpatrol/typescript-config@8.12.1'
-peerDependencyRules:
-  allowedVersions:
-    # Remove once the installed version declares ESLint 10 support.
-    # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/1075
-    # https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/pull/1081
-    eslint-plugin-jsx-a11y@6>eslint: ^10.0.0
