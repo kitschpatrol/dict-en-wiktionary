@@ -82,14 +82,11 @@ async function readWords(
 				minLength: 2,
 			})
 		) {
-			if (
-				(includeSuffixes && entry.pos === 'suffix') ||
-				(includePrefixes && entry.pos === 'prefix')
-			) {
-				wordSet.add(sanitizeWord(entry.word, true))
-			} else {
-				wordSet.add(sanitizeWord(entry.word))
-			}
+			wordSet.add(
+				(includeSuffixes && entry.pos === 'suffix') || (includePrefixes && entry.pos === 'prefix')
+					? sanitizeWord(entry.word, true)
+					: sanitizeWord(entry.word),
+			)
 
 			if (wordSet.size >= maxWords) {
 				break
