@@ -41,12 +41,13 @@
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
 		"fix": "ksc fix",
 		"lint": "ksc lint",
-		"release": "bumpp --commit 'Release: %s' && pnpm build && pnpm publish --otp $(op item get npm --otp)",
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent' && pnpm build && pnpm publish --otp $(op item get npm --otp)",
 		"test": "head -n 1000 \"src/en-wiktionary.txt\" | cspell -c ./cspell-ext.json \"--locale=en,en-US\" \"--languageId=*\" stdin",
 		"update": "tsx ./scripts/generate-dictionary.ts"
 	},
 	"devDependencies": {
 		"@cspell/cspell-tools": "^10.4.0",
+		"@kitschpatrol/chagent": "0.4.0",
 		"@kitschpatrol/shared-config": "^8.14.0",
 		"@types/node": "~24.13.6",
 		"bumpp": "^12.3.0",
